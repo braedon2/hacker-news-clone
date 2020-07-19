@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import PostsList from './components/PostsList';
-import { getTopPosts, getNewPosts } from './utils/api';
+import Top from './components/Top';
+import New from './components/New';
+import Nav from './components/Nav'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { fetchTopPosts } from './utils/api'
 
+// eslint-disable-next-line react/prefer-stateless-function
 class App extends React.Component {
   render() {
-    getTopPosts().then((data) => console.log(data));
-    getNewPosts().then((data) => console.log(data));
+    fetchTopPosts().then((posts) => console.log(posts))
     return (
-      <div className="container">
-        <PostsList posts={posts} />
-      </div>
+      <Router>
+        <div className="container">
+          <Nav />
+          <Route exact path="/" component={Top} />
+          <Route path="/new" component={New} />
+        </div>
+      </Router>
     );
   }
 } 
