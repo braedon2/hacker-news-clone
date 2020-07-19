@@ -273,3 +273,16 @@ li {
     background: #29292929;
     color: #4a4a4a;
 }
+
+.post-preview {
+    margin: 20px 0;
+}
+
+.post-preview * {
+    margin: 5px 0;
+}
+
+.post-preview p {
+    color: rgba(0, 0, 0, 0.5)
+}
+
