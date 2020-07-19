@@ -18,6 +18,8 @@
         "react"
     ],
     "rules": {
-        "react/forbid-prop-types": "off"
+        "react/forbid-prop-types": "off",
+        "prefer-const": "off",
+        "react/jsx-one-expression-per-line": "off"
     }
 }

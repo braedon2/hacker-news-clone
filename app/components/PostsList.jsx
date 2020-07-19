@@ -7,8 +7,8 @@ function PostPreview({ post }) {
     + `, ${date.getHours() % 12 === 0 ? 12 : date.getHours() % 12}`
     + `:${date.getMinutes()} ${date.getHours() > 11 ? 'PM' : 'AM'}`;
   return (
-    <div className='post-preview'>
-      <a className='link' href={post.url}>
+    <div className="post-preview">
+      <a className="link" href={post.url}>
         {post.title}
       </a>
       <p>by {post.by} on {dateString} with {post.descendants} comments</p>
