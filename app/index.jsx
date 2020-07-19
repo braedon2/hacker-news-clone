@@ -6,15 +6,15 @@ import { getTopPosts, getNewPosts } from './utils/api';
 
 class App extends React.Component {
   render() {
-    getTopPosts().then(data => console.log(data));
-    getNewPosts().then(data => console.log(data));
+    getTopPosts().then((data) => console.log(data));
+    getNewPosts().then((data) => console.log(data));
     return (
-      <div className='container'>
+      <div className="container">
         <PostsList posts={posts} />
       </div>
     );
   }
-}
+} 
 
 ReactDOM.render(
   <App />,
