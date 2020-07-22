@@ -87,8 +87,14 @@ li {
     text-align: center;
 }
 
-.link {
+.link-light {
     color: rgb(187, 46, 31);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-dark {
+    color: #DADADA;
     text-decoration: none;
     font-weight: bold;
 }
@@ -283,7 +289,9 @@ li {
 }
 
 .post-preview p {
-    color: rgba(0, 0, 0, 0.5);
+    /* color: rgba(0, 0, 0, 0.5); looks weird with dark theme*/ 
+    /* color: #696969 too dark */
+    color: #808080 
 }
 
 .active-link {

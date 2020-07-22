@@ -6,18 +6,31 @@ import New from './components/New';
 import Nav from './components/Nav'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { fetchTopPosts } from './utils/api'
+import { ThemeProvider } from './contexts/theme'
 
-// eslint-disable-next-line react/prefer-stateless-function
 class App extends React.Component {
+  state = {
+    theme: 'light',
+    toggleTheme: () => {
+      this.setState({
+        theme: this.state.theme === 'light' ? 'dark' : 'light'
+      })
+    }
+  }
+
   render() {
     fetchTopPosts().then((posts) => console.log(posts))
     return (
       <Router>
-        <div className="container">
-          <Nav />
-          <Route exact path="/" component={Top} />
-          <Route path="/new" component={New} />
-        </div>
+        <ThemeProvider value={this.state}>
+          <div className={this.state.theme}>
+            <div className="container">
+              <Nav />
+              <Route exact path="/" component={Top} />
+              <Route path="/new" component={New} />
+            </div>
+          </div>
+        </ThemeProvider>
       </Router>
     );
   }

@@ -17,3 +17,5 @@ export function fetchNewPosts() {
     .then((res) => res.json())
     .then((ids) => Promise.all(ids.map((id) => fetchItems(id))));
 }
+
+

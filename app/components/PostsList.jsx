@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {ThemeConsumer } from '../contexts/theme'
 
 function PostPreview({ post }) {
   let date = new Date(post.time * 1000);
@@ -8,12 +9,16 @@ function PostPreview({ post }) {
     + `:${date.getMinutes() < 10 ? '0' : ''}${date.getMinutes()}`
     + ` ${date.getHours() > 11 ? 'PM' : 'AM'}`;
   return (
-    <div className="post-preview">
-      <a className="link" href={post.url}>
-        {post.title}
-      </a>
-      <p>by {post.by} on {dateString} with {post.descendants} comments</p>
-    </div>
+    <ThemeConsumer>
+      {({ theme }) => (
+        <div className="post-preview">
+        <a className={`link-${theme}`} href={post.url}>
+          {post.title}
+        </a>
+        <p>by {post.by} on {dateString} with {post.descendants} comments</p>
+      </div>
+      )}
+    </ThemeConsumer>
   );
 }
 
@@ -24,11 +29,15 @@ PostPreview.propTypes = {
 export default function PostsList({ posts }) {
   return (
     <ul>
-      {posts.map((post) => (
-        <li key={post.id}>
-          <PostPreview post={post} />
-        </li>
-      ))}
+      {posts.map((post) => {
+        if (post === null) 
+          return null;
+        return (
+          <li key={post.id}>
+            <PostPreview post={post} />
+          </li>
+        )
+      })}
     </ul>
   );
 }
