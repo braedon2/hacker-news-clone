@@ -27,16 +27,8 @@ export function fetchUser(user) {
 }
 
 export async function fetchUserPosts(postIds) {
-  let userPosts = [];
-  let i = 0;
+  let postsToFetch = postIds.slice(0, 30)
 
-  while (userPosts.length < 30 && i < postIds.length) {
-    let item = await fetchItem(postIds[i])
-    if (item.type === "story") {
-      userPosts.push(item)
-    }
-    i += 1;
-  }
-
-  return userPosts;
+  return Promise.all(postsToFetch.map((id) => fetchItem(id)))
+    .then((posts) => posts.filter((post) => post.type === "story"))
 }

@@ -9,9 +9,8 @@ import PostsList from './PostsList'
 export default class User extends React.Component {
   state = {
     user: null,
-    userError: null,
     posts: null,
-    postsError: null
+    error: null
   }
 
   componentDidMount() {
@@ -27,18 +26,24 @@ export default class User extends React.Component {
       .then((posts) => this.setState({
         posts
       }))
+      .catch((error) => {
+        console.warn("Error: ", error);
+        this.setState({
+          error: "Failed to fetch :(",
+        })
+      })
   }
 
   loading() {
-    return this.state.user === null && this.state.userError === null;
+    return this.state.user === null && this.state.error === null;
   }
 
   loadingPosts() {
-    return this.state.posts === null && this.state.postsError === null;
+    return this.state.posts === null && this.state.error === null;
   }
 
   render() {
-    let {user, userError, posts, postsError } = this.state;
+    let {user, posts, error } = this.state;
 
     if (this.loading()) {
       return <Loading text="Fetching user" />
@@ -46,17 +51,24 @@ export default class User extends React.Component {
 
     return (
         <React.Fragment>
-          <div className="user-preview">
-            <h1  className="hd-large">{user.id}</h1>
-            <p >
-              joined <b>{getDateString(user.created)}</b> has <b>{user.karma.toLocaleString()}</b> karma
-            </p>
-          </div>
-          <div dangerouslySetInnerHTML={{__html: user.about}} />
-          <h2 className="hd-small">Posts</h2>
-          {this.loadingPosts() 
-            ? <Loading text="Fetching posts" /> 
-            : <PostsList posts={posts} />}
+          {user ? 
+            <React.Fragment>
+              <div className="user-preview">
+                <h1  className="hd-large">{user.id}</h1>
+                <p >
+                  joined <b>{getDateString(user.created)}</b> has <b>{user.karma.toLocaleString()}</b> karma
+                </p>
+              </div>
+              <div dangerouslySetInnerHTML={{__html: user.about}} />
+              <h2 className="hd-small">Posts</h2> 
+            </React.Fragment>
+          : null }
+
+          {this.loadingPosts() ? <Loading text="Fetching posts" /> : null}
+
+          {posts ? <PostsList posts={posts} /> : null}
+
+          {error ? <p className="center-text">{error}</p> : null}
         </React.Fragment>
     )
   }

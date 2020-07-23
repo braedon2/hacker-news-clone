@@ -5,8 +5,8 @@ import Loading from './Loading'
 
 export default class Top extends React.Component {
   state = {
-    posts: [],
-    error: "",
+    posts: null,
+    error: null,
     loading: true
   }
 
@@ -18,15 +18,28 @@ export default class Top extends React.Component {
           loading: false
         })
       })
+      .catch((error) => {
+        console.warn("Failed to fetch: ", error)
+        this.setState({
+          error: "Failed to fetch :(",
+          loading: false
+        })
+      })
   }
 
   render() {
-    if (this.state.loading === true) {
+    const {posts, error, loading} = this.state;
+
+    if (loading === true) {
       return <Loading />
     }
 
     return (
-      <PostsList posts={this.state.posts} />
+      <React.Fragment>
+        {posts ? <PostsList posts={posts} /> : null}
+
+        {error ? <p className="center-text">{error}</p> : null}
+      </React.Fragment>
     )
   }
 }
