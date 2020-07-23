@@ -294,6 +294,28 @@ li {
     color: #808080 
 }
 
+.user-preview {
+    margin: 20px 0;
+}
+
+.user-preview * {
+    margin: 5px 0;
+}
+
+.user-preview p {
+    /* color: rgba(0, 0, 0, 0.5); looks weird with dark theme*/ 
+    /* color: #696969 too dark */
+    color: #808080 
+}
+
+.item-description-route-light {
+    color: black;
+}
+
+.item-description-route-dark {
+    color: #DADADA;
+}
+
 .active-link {
     color: rgb(187, 46, 31);
 }

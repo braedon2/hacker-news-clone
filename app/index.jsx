@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Top from './components/Top';
 import New from './components/New';
-import Nav from './components/Nav'
+import Nav from './components/Nav';
+import User from './components/User';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { fetchTopPosts } from './utils/api'
 import { ThemeProvider } from './contexts/theme'
 
 class App extends React.Component {
@@ -19,7 +19,6 @@ class App extends React.Component {
   }
 
   render() {
-    fetchTopPosts().then((posts) => console.log(posts))
     return (
       <Router>
         <ThemeProvider value={this.state}>
@@ -28,6 +27,7 @@ class App extends React.Component {
               <Nav />
               <Route exact path="/" component={Top} />
               <Route path="/new" component={New} />
+              <Route path="/user" component={User} />
             </div>
           </div>
         </ThemeProvider>

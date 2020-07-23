@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {ThemeConsumer } from '../contexts/theme'
+import { Link } from 'react-router-dom'
+import { getDateString } from '../utils/util'
 
 function PostPreview({ post }) {
-  let date = new Date(post.time * 1000);
-  let dateString = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
-    + `, ${date.getHours() % 12 === 0 ? 12 : date.getHours() % 12}`
-    + `:${date.getMinutes() < 10 ? '0' : ''}${date.getMinutes()}`
-    + ` ${date.getHours() > 11 ? 'PM' : 'AM'}`;
+  let dateString = getDateString(post.time)
   return (
     <ThemeConsumer>
       {({ theme }) => (
@@ -15,7 +13,20 @@ function PostPreview({ post }) {
         <a className={`link-${theme}`} href={post.url}>
           {post.title}
         </a>
-        <p>by {post.by} on {dateString} with {post.descendants} comments</p>
+        <p>
+          by&nbsp;
+          <Link  
+            className={`item-description-route-${theme}`}
+            to={{
+              pathname: '/user',
+              search: `id=${post.by}`
+            }}
+          >
+            {post.by}
+          </Link>
+          &nbsp;on {dateString} with&nbsp; 
+          {post.descendants} comments
+        </p>
       </div>
       )}
     </ThemeConsumer>
