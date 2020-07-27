@@ -45,6 +45,8 @@ export default class User extends React.Component {
   render() {
     let {user, posts, error } = this.state;
 
+    console.log(user)
+
     if (this.loading()) {
       return <Loading text="Fetching user" />
     }
@@ -55,7 +57,7 @@ export default class User extends React.Component {
             <React.Fragment>
               <div className="user-preview">
                 <h1  className="hd-large">{user.id}</h1>
-                <p >
+                <p className="info">
                   joined <b>{getDateString(user.created)}</b> has <b>{user.karma.toLocaleString()}</b> karma
                 </p>
               </div>
@@ -67,6 +69,8 @@ export default class User extends React.Component {
           {this.loadingPosts() ? <Loading text="Fetching posts" /> : null}
 
           {posts ? <PostsList posts={posts} /> : null}
+
+          {posts && posts.length === 0 ? <p className="center-text">This user hasn't posted yet</p> : null}
 
           {error ? <p className="center-text">{error}</p> : null}
         </React.Fragment>

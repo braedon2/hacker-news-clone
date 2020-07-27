@@ -5,6 +5,7 @@ import Top from './components/Top';
 import New from './components/New';
 import Nav from './components/Nav';
 import User from './components/User';
+import Post from './components/Post';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { ThemeProvider } from './contexts/theme'
 
@@ -28,6 +29,7 @@ class App extends React.Component {
               <Route exact path="/" component={Top} />
               <Route path="/new" component={New} />
               <Route path="/user" component={User} />
+              <Route path="/post" component={Post} />
             </div>
           </div>
         </ThemeProvider>

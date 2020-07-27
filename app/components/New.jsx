@@ -29,6 +29,7 @@ export default class Top extends React.Component {
 
   render() {
     const {posts, error, loading} = this.state;
+    console.log(posts)
 
     if (loading === true) {
       return <Loading />

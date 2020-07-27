@@ -288,12 +288,6 @@ li {
     margin: 5px 0;
 }
 
-.post-preview p {
-    /* color: rgba(0, 0, 0, 0.5); looks weird with dark theme*/ 
-    /* color: #696969 too dark */
-    color: #808080 
-}
-
 .user-preview {
     margin: 20px 0;
 }
@@ -302,10 +296,8 @@ li {
     margin: 5px 0;
 }
 
-.user-preview p {
-    /* color: rgba(0, 0, 0, 0.5); looks weird with dark theme*/ 
-    /* color: #696969 too dark */
-    color: #808080 
+.info {
+    color: #808080;
 }
 
 .item-description-route-light {
@@ -318,5 +310,14 @@ li {
 
 .active-link {
     color: rgb(187, 46, 31);
+}
+
+.comment {
+    padding: 10px;
+    margin: 10px 0
+}
+
+.comment * {
+    padding-top: 0;
 }
 
