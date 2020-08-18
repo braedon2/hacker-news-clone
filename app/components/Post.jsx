@@ -2,8 +2,8 @@ import React from 'react'
 import { fetchItem } from '../utils/api'
 import { ThemeConsumer } from '../contexts/theme'
 import Loading from './Loading'
-import ItemInfo from './ItemInfo'
-import PostPreview from './PostPreview'
+import Title from './Title'
+import PostMetaInfo from './PostMetaInfo'
 
 const queryString = require('query-string')
 
@@ -12,7 +12,10 @@ function Comment({ comment }) {
     <ThemeConsumer>
       {({ theme }) => (
         <div className={`bg-${theme} comment`}>
-          <ItemInfo item={comment} />
+          <PostMetaInfo
+            by={comment.by}
+            time={comment.time}
+          />
           <div dangerouslySetInnerHTML={{__html: comment.text}} />
         </div>
       )}
@@ -86,7 +89,15 @@ export default class Post extends React.Component {
       <ThemeConsumer>
         {({ theme }) => (
           <React.Fragment>
-            <PostPreview large post={post} />
+            <h1 className="header">
+              <Title url={post.url} title={post.title} id={post.id} />
+            </h1>
+            <PostMetaInfo 
+              by={post.by} 
+              time={post.time} 
+              descendants={post.descendants}
+              id={post.id}
+            />
 
             <div dangerouslySetInnerHTML={{__html: post.text}} />
 

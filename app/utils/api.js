@@ -16,19 +16,6 @@ export function fetchItem(id) {
     .then((data) => data);
 }
 
-export function fetchTopPosts() {
-  return fetch(`${prefix}topstories.json?orderBy="$key"&limitToFirst=30`)
-    .then((res) => res.json())
-    .then((ids) => Promise.all(ids.map((id) => fetchItem(id))));
-}
-
-export function fetchNewPosts() {
-  return fetch(`${prefix}newstories.json?orderBy="$key"&limitToFirst=30`)
-    .then((res) => res.json())
-    .then((ids) => Promise.all(ids.map((id) => fetchItem(id))));
-}
-
-
 export function fetchMainPosts(type) {
   return fetch(`${prefix}${type}stories.json?orderBy="$key"&limitToFirst=30`)
     .then((res) => res.json())

@@ -2,6 +2,12 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { ThemeConsumer } from '../contexts/theme'
 
+const styles = {
+  activeStyle: {
+    color: 'rgb(187, 46, 31)'
+  }
+}
+
 export default function Nav() {
   return (
     <nav className="row space-between">
@@ -11,7 +17,7 @@ export default function Nav() {
             className="nav-link" 
             to='/'
             exact
-            activeClassName="active-link"
+            activeStyle={styles.activeStyle}
           >
             Top
           </NavLink>
@@ -20,7 +26,7 @@ export default function Nav() {
           <NavLink 
             className="nav-link" 
             to='/new'
-            activeClassName="active-link"
+            activeStyle={styles.activeStyle}
           >
             New
           </NavLink>

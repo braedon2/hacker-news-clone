@@ -26,5 +26,5 @@ PostMetaInfo.propTypes = {
   by: PropTypes.string.isRequired,
   time: PropTypes.number.isRequired,
   descendents: PropTypes.number,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
 }

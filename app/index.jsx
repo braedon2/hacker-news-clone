@@ -11,8 +11,6 @@ import { ThemeProvider } from './contexts/theme'
 import Loading from './components/Loading';
 
 const Posts = React.lazy(() => import('./components/Posts'))
-const Top = React.lazy(() => import('./components/Top'));
-const New = React.lazy(() => import('./components/New'));
 const User = React.lazy(() => import('./components/User'));
 const Post = React.lazy(() => import('./components/Post'));
 

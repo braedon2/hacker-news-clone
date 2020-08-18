@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ThemeConsumer } from '../contexts/theme'
 import Title from './Title'
 import PostMetaInfo from './PostMetaInfo'
-import ItemInfo from './ItemInfo'
-import PostPreview from './PostPreview'
 
 
 
@@ -16,7 +13,6 @@ export default function PostsList({ posts }) {
           return null;
         return (
           <li key={post.id} className="post-preview">
-            {/* <PostPreview post={post} /> */}
             <Title title={post.title} url={post.url} id={post.id} />
             {/* <ItemInfo item={post} /> */}
             <PostMetaInfo 

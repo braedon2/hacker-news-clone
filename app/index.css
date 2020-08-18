@@ -119,11 +119,12 @@ li {
     margin: 20px 0;
 }
 
-.post-preview * {
-    margin: 5px 0;
+.header {
+    margin-bottom: 5px;
 }
 
 .post-meta-info-light {
+    margin-top: 5px;
     color: gray;
 }
 
@@ -132,6 +133,7 @@ li {
 }
 
 .post-meta-info-dark {
+    margin-top: 5px;
     color: gray;
 }
 
@@ -169,6 +171,6 @@ li {
 }
 
 .comment * {
-    padding-top: 0;
+    margin: 10px 0;
 }
 
