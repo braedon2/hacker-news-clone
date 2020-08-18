@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { getDateString } from '../utils/util'
 
 export default function ItemInfo({ item }) {
-  console.log('here')
   return (
     <ThemeConsumer>
       {({ theme }) => (
