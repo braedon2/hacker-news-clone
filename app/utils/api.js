@@ -1,6 +1,14 @@
-import { array } from "prop-types";
+
 
 const prefix = 'https://hacker-news.firebaseio.com/v0/';
+
+function removeDead(ids) {
+
+}
+
+function removeDeleted(ids) {
+
+}
 
 export function fetchItem(id) {
   return fetch(`${prefix}item/${id.toString(10)}.json`)
@@ -16,6 +24,13 @@ export function fetchTopPosts() {
 
 export function fetchNewPosts() {
   return fetch(`${prefix}newstories.json?orderBy="$key"&limitToFirst=30`)
+    .then((res) => res.json())
+    .then((ids) => Promise.all(ids.map((id) => fetchItem(id))));
+}
+
+
+export function fetchMainPosts(type) {
+  return fetch(`${prefix}${type}stories.json?orderBy="$key"&limitToFirst=30`)
     .then((res) => res.json())
     .then((ids) => Promise.all(ids.map((id) => fetchItem(id))));
 }

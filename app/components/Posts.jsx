@@ -1,17 +1,17 @@
 import React from 'react';
 import PostsList from './PostsList';
-import { fetchTopPosts } from '../utils/api'
+import { fetchMainPosts } from '../utils/api'
 import Loading from './Loading'
 
 export default class Top extends React.Component {
   state = {
-    posts: null,
-    error: null,
+    posts: [],
+    error: "",
     loading: true
   }
 
   componentDidMount() {
-    fetchTopPosts()
+    fetchMainPosts(this.props.type)
       .then((posts) => {
         this.setState({
           posts,
@@ -19,9 +19,9 @@ export default class Top extends React.Component {
         })
       })
       .catch((error) => {
-        console.warn("Failed to fetch: ", error)
+        console.warn("Error: ", error)
         this.setState({
-          error: "Failed to fetch :(",
+          error: "Failed to fetch",
           loading: false
         })
       })
@@ -29,6 +29,7 @@ export default class Top extends React.Component {
 
   render() {
     const {posts, error, loading} = this.state;
+    console.log(posts)
 
     if (loading === true) {
       return <Loading />

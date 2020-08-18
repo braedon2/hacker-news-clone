@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { ThemeProvider } from './contexts/theme'
 import Loading from './components/Loading';
 
+const Posts = React.lazy(() => import('./components/Posts'))
 const Top = React.lazy(() => import('./components/Top'));
 const New = React.lazy(() => import('./components/New'));
 const User = React.lazy(() => import('./components/User'));
@@ -34,8 +35,8 @@ class App extends React.Component {
               <Nav />
               
               <React.Suspense fallback={<Loading /> }>
-                <Route exact path="/" component={Top} />
-                <Route path="/new" component={New} />
+                <Route exact path="/" render={() => <Posts type="top" />} />
+                <Route path="/new" render={() => <Posts type="new" />} />
                 <Route path="/user" component={User} />
                 <Route path="/post" component={Post} />
               </React.Suspense>
