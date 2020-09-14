@@ -25,7 +25,7 @@ This component contains optional Post text and the comments
 
 
 ### User
-A users profile
+A users profile  
 <img src="img/User.png" width="550"/>
 
 
