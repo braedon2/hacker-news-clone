@@ -17,17 +17,19 @@ The Main components are `Posts`, `Post`, and `User`
 
 ### Posts
 This is the main homepage component that renders the list of links to posts
-![Posts](img/Posts.png)
+<img src="img/Posts.png" width="550"/>
 
 ### Post
 This component contains optional Post text and the comments
-![Post](img/Post.png)
+<img src="img/Post.png" width="550"/>
+
 
 ### User
 A users profile
-![User](img/User.png)
+<img src="img/User.png" width="550"/>
+
 
 ## Contexts
 
 The only context used is one for a light and dark theme
-![Dark](img/Dark.png)
+<img src="img/Dark.png" width="550"/>
